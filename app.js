@@ -6,6 +6,8 @@ const reportRouter = require('./routes/reportRoutes');
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/doctors', doctorRouter);
 app.use('/patients', patientRouter);
 app.use('/reports', reportRouter);
