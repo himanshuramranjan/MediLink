@@ -20,10 +20,12 @@ const reportSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Doctor',
     },
-    createdAt: {
+    visitDate: {
         type: Date,
         default: Date.now
     }
 });
 
 const Report = mongoose.model('Report', reportSchema);
+
+module.exports = Report;
