@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const doctorSchema = new mongoose.Schema({
     username: {
@@ -27,6 +29,22 @@ const doctorSchema = new mongoose.Schema({
         }
     }
 });
+
+// Encrypts the password
+doctorSchema.pre('save', async function(next) {
+
+    this.password = await bcrypt.hash(this.password, 12);
+    this.confirmPassword = undefined;
+
+    next();
+});
+
+// Creates signIn token using jwt
+doctorSchema.methods.signInToken = id => {
+    return jwt.sign({ id: id }, process.env.JWT_SECRET_KEY, {
+        expiresIn: process.env.JWT_EXPIRES_IN * 24 * 3600 * 1000
+    });
+}
 
 const Doctor = mongoose.model('Doctor', doctorSchema);
 
