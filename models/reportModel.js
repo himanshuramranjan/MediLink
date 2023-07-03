@@ -11,6 +11,10 @@ const reportSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Doctor',
     },
+    patient: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Patient'
+    },
     visitDate: {
         type: Date,
         default: Date.now
