@@ -1,3 +1,4 @@
+const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const Doctor = require('../models/doctorModel');
 
@@ -76,7 +77,7 @@ exports.protectRoute = async (req, res, next) => {
         req.doctor = doctor;
         next();
     } catch(err) {
-        
+
         console.log(err);
         res.status(401).json({
             status: 'fail'
