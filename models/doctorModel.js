@@ -46,6 +46,11 @@ doctorSchema.methods.signInToken = id => {
     });
 }
 
+// Compares the actual password with user's provided password
+doctorSchema.methods.isCorrectPassword = async function(candidatePswd, doctorPswd) {
+    return await bcrypt.compare(candidatePswd, doctorPswd);
+}
+
 const Doctor = mongoose.model('Doctor', doctorSchema);
 
 module.exports = Doctor;
