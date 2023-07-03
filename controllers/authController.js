@@ -56,3 +56,30 @@ exports.login = async (req, res) => {
         })
     }
 }
+
+exports.protectRoute = async (req, res, next) => {
+    try {
+
+        if(!req.headers.authorization || !req.headers.authorization.startsWith('Bearer')) {
+            throw "You are not logged in";
+        }
+
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = await promisify(jwt.verify)(token, process.env.JWT_SECRET_KEY);
+
+        const doctor = await Doctor.findById(decodedToken.id);
+
+        if(!doctor) {
+            throw "The user no longer exist";
+        }
+
+        req.doctor = doctor;
+        next();
+    } catch(err) {
+        
+        console.log(err);
+        res.status(401).json({
+            status: 'fail'
+        })
+    }
+}
