@@ -5,6 +5,7 @@ const authController = require('../controllers/authController');
 
 const router = express.Router({ mergeParams: true });
 
+// Ptotects from auhthenticated request
 router.use(authController.protectRoute);
  
 router.post('/create-report', reportController.createReport);
