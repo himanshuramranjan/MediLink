@@ -13,7 +13,7 @@ MediLink is an API designed to facilitate doctors in a hospital responsible for 
 ## Table of Contents
 
 - [Installation](#installation)
--[Configuration](#configuration)
+- [Configuration](#configuration)
 - [Usage](#usage)
 - [Routes](#routes)
   - [Doctor Routes](#doctor-routes)
@@ -55,7 +55,7 @@ JWT_COOKIE_EXPIRES_IN=90
 
 1. Start the server:
 
-   ```shell
+   ```plaintext
    nodemon server.js
    ```
 
