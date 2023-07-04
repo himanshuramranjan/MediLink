@@ -22,7 +22,7 @@ const reportSchema = new mongoose.Schema({
 });
 
 // Populate doctor and patient details
-reportSchema.pre('/^find/', function(next) {
+reportSchema.pre(/^find/, function(next) {
     this.populate({
         path: 'doctor',
         select: 'username name'
