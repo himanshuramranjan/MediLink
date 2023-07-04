@@ -8,6 +8,6 @@ router.use(authController.protectRoute);
 
 router.post('/create-report', reportController.createReport);
 router.get('/all-reports', reportController.getAllReports);
-router.get('/:status', reportController.getReport);
+router.get('/:status', reportController.getReports);
 
 module.exports = router;
