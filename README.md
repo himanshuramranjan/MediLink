@@ -46,9 +46,7 @@ MediLink is an API designed to facilitate doctors in a hospital responsible for 
    PASSWORD=<your_database_password>
    JWT_SECRET_KEY=<your_jwt_secret_key>
    JWT_EXPIRES_IN=<your_jwt_expiration_day>
-
-JWT_COOKIE_EXPIRES_IN=90
-
+   JWT_COOKIE_EXPIRES_IN=90
    ```
 
 ### Usage
