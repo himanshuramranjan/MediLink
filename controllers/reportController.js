@@ -27,7 +27,7 @@ exports.createReport = async (req, res) => {
 // Get all reports for a patient
 exports.getAllReports = async (req, res) =>{
     try {
-        // req.query.sort = 'visitDate';
+        
         const reports = await Report.find({ patient: req.params.id }).sort('-visitDate');
 
         res.status(200).json({
