@@ -21,6 +21,18 @@ const reportSchema = new mongoose.Schema({
     }
 });
 
+// Populate doctor and patient details
+reportSchema.pre('/^find/', function(next) {
+    this.populate({
+        path: 'doctor',
+        select: 'username name'
+    }).populate({
+        path: 'patient',
+        select: 'patientName'
+    });
+
+    next();
+})
 const Report = mongoose.model('Report', reportSchema);
 
 module.exports = Report;

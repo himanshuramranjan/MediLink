@@ -7,7 +7,7 @@ exports.createReport = async (req, res) => {
             status: req.body.status,
             visitDate: req.body.visitDate,
             doctor: req.doctor.id,
-            patient: req.body.id
+            patient: req.params.id
         });
 
         res.status(201).json({
